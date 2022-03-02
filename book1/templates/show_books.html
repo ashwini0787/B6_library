@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>show-books</title>   
+    </head>
+    <body>
+<h1>All Books</h1><hr>
+
+<table  border   width =75% >
+    <tr>
+        <th>BOOK ID</th>
+        <th>BOOK Name</th>
+        <th>BOOK Price</th>
+        <th>BOOK Quantity</th>
+        <th>Action</th>
+    </tr>
+    {%for i in Books %}
+        {% if i.is_active%}
+        <tr>
+        <td>{{i.id}} </td>
+        <td>{{i.name}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>
+            <a href="{% url 'edit-books' i.id %}">Edit </a> <npsp>   | 
+            <a href="{% url 'delete-books' i.id %}"> Hard Delete </a> <npsp></npsp> |
+            <a href="{% url 'soft_delete' i.id %}"> Soft Delete </a> 
+
+        </td>
+    </tr> 
+    {% endif %}
+    {%endfor%}
+    
+</table><br>
+
+<a href="{% url 'homepage' %}">Home page</a> <br>
+<a href="{% url 'inactive_books' %}"> Show in-active Books</a>
+<form method="post" action="{% url 'delete_all_books'%}">
+    {% csrf_token %}
+    <button type="submit">Delete all-books</button>
+</form>
+    </body>
+</html>

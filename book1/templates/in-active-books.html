@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>in-active-books</title>   
+    </head>
+    <body>
+<h1>In Active Books</h1><hr>
+
+<table  border   width =75%>
+    <tr>
+        <th>BOOK ID</th>
+        <th>BOOK Name</th>
+        <th>BOOK Price</th>
+        <th>BOOK Quantity</th>
+        <th>Action</th>
+    </tr>
+    {% for i in inactive_books %}
+    <tr>
+        <td>{{i.id}} </td>
+        <td>{{i.name}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>
+            <a href="{%url 'restore_books' i.id %}">Restore </a> <npsp>   |  
+        </td>
+    </tr>
+    {% endfor %}
+    
+
+
+</table>
+
+<a href="{% url 'homepage' %}">Home page</a>
+
+
+    </body>
+</html>

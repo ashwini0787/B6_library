@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>homepage</title>   
+    </head>
+    <body>
+<h1>Books</h1><hr>
+<form action="{% url 'homepage' %}" method="POST">
+    {% csrf_token %}
+    {% if single_book %}
+        Book Id: <input type="number", name = "bid", value = {{single_book.id}}  readonly><br><br>
+    {% endif %}
+        Book name: <input type="text", name = "bname", value = {{single_book.name}} ><br><br>
+        Book price : <input type="number", name = "bprice", value = {{single_book.price}} ><br><br>
+        Book quatity: <input type="number", name = "bqty", value = {{single_book.quantity}} ><br><br>
+    
+    
+    <input type="submit", value= submit> <br><br>
+
+    <a href="{% url 'show-books' %}">show-books</a>
+</form>
+
+</body>
+</html>
